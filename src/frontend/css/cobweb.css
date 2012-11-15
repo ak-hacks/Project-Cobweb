@@ -13,15 +13,21 @@ body #header, body #footer {
 	position: relative;
 	z-index: 3;
 }
+body #header {
+	width: 980px;
+	height: 150px;
+}
 body #footer {
-	top: 500px;
+	top: 475px;
+	width: 980px;
+	height: 100px;
 }
 div#canvas, form#search {
 	background: #FFF;
 	height: 470px;
 	position: absolute;
 	outline: solid 1px #CCC;
-	top: 275px;
+	top: 155px;
 	width: 975px;
 }
 div#canvas {
@@ -44,7 +50,7 @@ div#canvas h1 {
 	margin-bottom: 0;
 }
 form#search input {
-	font-size: 2em;
+	font-size: 3em;
 	margin: 2em 0;
 }
 form#search input[type=search] {
