@@ -108,6 +108,13 @@ Array.prototype.remove = function(from, to) {
 function click(d) {
   console.log("CLICK", d);
   // RENDER popup OR GOTO article OR RESEARCH
+  if(d.type === "article"){
+    //document.location = d.url;
+  }
+  else {
+    // re-search
+  }
+
 }
 
 
@@ -131,9 +138,6 @@ $.each(nodes, function(i,item){
   });
 });
 
-console.log('NODES',nodes);
-console.log('LINKS',links);
-
 // Now the articles
 $.each(articles, function(i,article){
   nodes.push(article);
@@ -145,8 +149,6 @@ $.each(articles, function(i,article){
     num_existing_article_links = articleLinkCount(links, link2),
     existing_article_link_index = articleLinkExists(links, link2),
     existing_article_link;
-
-    console.log(itemExists(nodes, article.belongs[0]), itemExists(nodes, article.belongs[1]), existing_item_link_index, num_existing_article_links);
 
     // Remove link between items
     if(existing_item_link_index !== -1){

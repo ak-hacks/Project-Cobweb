@@ -13,21 +13,15 @@ body #header, body #footer {
 	position: relative;
 	z-index: 3;
 }
-body #header {
-	width: 980px;
-	height: 150px;
-}
 body #footer {
-	top: 475px;
-	width: 980px;
-	height: 100px;
+	top: 505px;
 }
 div#canvas, form#search {
 	background: #FFF;
-	height: 470px;
+	height: 600px;
 	position: absolute;
 	outline: solid 1px #CCC;
-	top: 155px;
+	top: 90px;
 	width: 975px;
 }
 div#canvas {
@@ -58,4 +52,22 @@ form#search input[type=search] {
 }
 form#search .error {
 	color: #C00;
+}
+
+
+
+.node circle {
+  stroke: #000;
+  stroke-width: 1px;
+  box-shadow: 1px 1px 1px #666;
+}
+.node text {
+  cursor: pointer;
+  color: #00F;
+  text-decoration: underline;
+}
+
+.link {
+  stroke: #666;
+  stroke-opacity: 0.9;
 }
