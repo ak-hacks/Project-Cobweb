@@ -13,6 +13,10 @@ public class HelloWorld {
 	
 	private static final Logger LOGGER = Logger.getLogger(HelloWorld.class);
 	
+	public String getGreeting() {
+		return "Hello World!";
+	}
+	
 	/**
 	 * @param args
 	 */
