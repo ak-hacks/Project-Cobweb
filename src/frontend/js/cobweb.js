@@ -215,7 +215,7 @@ function doSearch(query,callback){
     node.append("text")
       .attr("dy", ".3em")
       .style("text-anchor", "middle")
-      .text(function(d) { return d.name + " (" + itemExists(nodes,d) + ")"; })
+      .text(function(d) { return d.name; })
       .on("click", clickNode);
 
     // Layout on page
