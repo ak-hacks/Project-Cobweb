@@ -1,37 +1,35 @@
 var items = [
   {
-    "name": "Financial Times",
-    "type": "company",
-    "associations": [
-      "Marjorie"
-    ]
-  },
-  {
-    "name": "Google",
-    "type": "company",
-    "associations" : [
+    "name": "Google",                   // Name of the company or person
+    "type": "company",                  // Type: company or person
+    "url": "http://www.google.co.uk",   // URL of real page
+    "associations" : [                  // Array of associated people/companies
       "Sergy Brin",
-      "Larry Page"
+      "Larry Page",
+      "A Googler"
     ]
 
   },
   {
     "name": "Sergy Brin",
     "type": "person",
+    "url": "http://www.google.co.uk",
     "associations" : [
-    "Google"
+      "Google"
     ]
-  },
-  {
-    "name": "Marjorie",
-    "type": "person",
-    "associations" : [
-    "Financial Times"
-    ]    
   },
   {
     "name": "Larry Page",
     "type": "person",
+    "url": "http://www.google.co.uk",
+    "associations" : [
+      "Google"
+    ]
+  },
+  {
+    "name": "A Googler",
+    "type": "person",
+    "url": "http://www.google.co.uk",
     "associations" : [
       "Google"
     ]
