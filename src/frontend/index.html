@@ -11,14 +11,32 @@
 <form id="search">
   <h1>Project Cobweb</h1>
   <label><input type="search" placeholder="Search for Company or Person." /> <input type="submit" value="Go"></label>
+
+  <h2>Welcome to the Financial Times Company and Board members mapping service.</h2>
+  <p>This tool will show you the links between Companies and their Board Members.</p>
+  <p><strong>To use:</strong></p>
+  <ul>
+  	<li>Drag the items around to view the connections.</li>
+  	<li>Drag the background to move around the visualisation.</li>
+  	<li>Scroll to zoom in and out.</li>
+  </ul>
+  <p><strong>Example searches:</strong></p>
+  <ul>
+  	<li><a href="#PEARSON%20PLC">PEARSON PLC</a></li>
+  	<li><a href="#GOOGLE%20INC.">GOOGLE INC.</a></li>
+  	<li><a href="#APPLE%20INC.">APPLE INC.</a></li>
+  	<li><a href="#Marjorie%20Scardino">Marjorie Scardino</a></li>
+  	<li><a href="#Larry%20Page">Larry Page</a></li>
+  </ul>
 </form>
 
 <div id="canvas"></div>
 
 <img src="images/footer.png" alt="" id="footer" />
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-<script src="js/fakeJSON.js"></script>
-<script src="js/cobweb.js"></script>
+<script type="text/javascript" src="js/d3.v2.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.ba-hashchange.min.js"></script>
+<script type="text/javascript" src="js/fakeJSON.js"></script>
+<script type="text/javascript" src="js/cobweb.js"></script>
 </body>
 </html>
