@@ -11,6 +11,7 @@ import org.neo4j.graphdb.traversal.Traverser;
 
 import com.ft.hack.cobweb.dao.CobwebDAO;
 import com.ft.hack.cobweb.domain.Datanode;
+import com.ft.hack.cobweb.domain.SearchResult;
 
 /**
  * @author anurag.kapur
@@ -22,8 +23,12 @@ public class RelationsQueryService {
 	private static String NAME_KEY = "name";
 	private static String TYPE_KEY = "type";
 	
-	public List<Datanode> getRelations(String startingNodeName) {
+	public List<List> getRelations(String startingNodeName) {
+		List<List> results = new ArrayList<List>();
 		List<Datanode> dataNodes = new ArrayList<Datanode>();
+		List<SearchResult> searchResults = new ArrayList<SearchResult>();
+		FTContentSearchService searchService = new FTContentSearchService();
+		
 		CobwebDAO dao = new CobwebDAO();
 		Traverser traverser = dao.getConnections(startingNodeName);
 		Iterable<Node> nodesIterable = traverser.nodes();
@@ -44,9 +49,16 @@ public class RelationsQueryService {
 				
 				Relationship relationship = (Relationship) startingNodeRelationships.next();
 				Node otherNode = relationship.getOtherNode(startingNode);
-				otherDataNode.setName((String)otherNode.getProperty(NAME_KEY));
+				String otherNodeName = (String)otherNode.getProperty(NAME_KEY);
+				otherDataNode.setName(otherNodeName);
 				otherDataNode.setType((String)otherNode.getProperty(TYPE_KEY));
 				startingDataNode.addAssociation(otherDataNode);
+				
+				List<SearchResult> intermediateSearchResults = searchService.search(startingNodeName, otherNodeName);
+				for (Iterator iterator = intermediateSearchResults.iterator(); iterator.hasNext();) {
+					SearchResult searchResult = (SearchResult) iterator.next();
+					searchResults.add(searchResult);
+				}
 			}
 			
 			dataNodes.add(startingDataNode);
@@ -70,15 +82,19 @@ public class RelationsQueryService {
 				}
 				dataNodes.add(dataNode);
 			}
+			
+			//Create wrapper list
+			results.add(dataNodes);
+			results.add(searchResults);
 		}catch(Exception e) {
 			LOGGER.error(e);
 		}
 		
-		return dataNodes;
+		return results;
 	}
 	
 	public static void main(String args[]) {
 		RelationsQueryService queryService = new RelationsQueryService();
-		queryService.getRelations("Google");
+		queryService.getRelations("Larry Page");
 	}
 }

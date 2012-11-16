@@ -5,6 +5,7 @@ package com.ft.hack.cobweb.dao;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -85,15 +86,30 @@ public class CobwebDAO {
         return traverser;
     }
     
-    public static void main(String args[]) {
-    	CobwebDAO dao = new CobwebDAO();
+    public void insertRecords(List<String[]> records) {
     	Transaction tx = DBConnectionManager.getDBService().beginTx();
     	try {
+    	
+    		for (Iterator iterator = records.iterator(); iterator.hasNext();) {
+				String[] record = (String[]) iterator.next();
+				connect(record[0], record[1], record[2], record[3]);
+			}
+    		tx.success();
+    	}finally {
+    		tx.finish();
+    	}
+    }
+    
+    public static void main(String args[]) {
+    	CobwebDAO dao = new CobwebDAO();
+    	//Transaction tx = DBConnectionManager.getDBService().beginTx();
+    	try {
+    		/*
 	    	dao.connect("Google", "company", "Sergey Brin", "person");
 	    	dao.connect("Google", "company", "Larry Page", "person");
 	    	dao.connect("Larry Page", "person", "Apple", "company");
 	    	dao.connect("Tim Cook", "person", "Apple", "company");
-	    	
+	    	*/
 	    	Traverser traverser = dao.getConnections("Larry Page");
 	    	String output = "";
 	    	for (Path path : traverser)
@@ -108,9 +124,9 @@ public class CobwebDAO {
 				nodesIterator.remove();
 				nodes.add(node);
 			}
-	    	tx.success();
+	    	//tx.success();
     	}finally {
-    		tx.finish();
+    		//tx.finish();
     	}
     }
 }
