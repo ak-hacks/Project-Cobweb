@@ -12,6 +12,7 @@ import org.neo4j.graphdb.Direction;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Path;
 import org.neo4j.graphdb.RelationshipType;
+import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.index.Index;
 import org.neo4j.graphdb.traversal.Evaluators;
 import org.neo4j.graphdb.traversal.TraversalDescription;
@@ -86,21 +87,20 @@ public class CobwebDAO {
     
     public static void main(String args[]) {
     	CobwebDAO dao = new CobwebDAO();
-    	//Transaction tx = DBConnectionManager.getDBService().beginTx();
-    	//try {
-	    	//dao.connect("Google", "company", "Sergey Brin", "person");
-	    	//dao.connect("Google", "company", "Larry Page", "person");
-	    	//dao.connect("Larry Page", "person", "Apple", "company");
+    	Transaction tx = DBConnectionManager.getDBService().beginTx();
+    	try {
+	    	dao.connect("Google", "company", "Sergey Brin", "person");
+	    	dao.connect("Google", "company", "Larry Page", "person");
+	    	dao.connect("Larry Page", "person", "Apple", "company");
+	    	dao.connect("Tim Cook", "person", "Apple", "company");
 	    	
 	    	Traverser traverser = dao.getConnections("Larry Page");
 	    	String output = "";
 	    	for (Path path : traverser)
 	        {
-	    		
 	            output += "At depth " + path.length() + " => " + path.endNode().getProperty( "name" ) + "\n";
-	            System.out.println(output);
 	        }
-	    	
+	    	System.out.println(output);
 	    	Set<Node> nodes = new LinkedHashSet<Node>();
 	    	Iterator<Node> nodesIterator = nodes.iterator();
 	    	while (nodesIterator.hasNext()) {
@@ -108,9 +108,9 @@ public class CobwebDAO {
 				nodesIterator.remove();
 				nodes.add(node);
 			}
-	    	//tx.success();
-    	//}finally {
-    	//	tx.finish();
-    	//}
+	    	tx.success();
+    	}finally {
+    		tx.finish();
+    	}
     }
 }

@@ -19,6 +19,6 @@ public class CobwebServiceController {
 	public ModelAndView getRelations(@PathVariable String name) {
 		RelationsQueryService queryService = new RelationsQueryService();
 		List<Datanode> dataNodes = queryService.getRelations(name);
-		return new ModelAndView("relations", "relations", dataNodes);
+		return new ModelAndView("relations", "nodes", dataNodes);
 	}
 }
