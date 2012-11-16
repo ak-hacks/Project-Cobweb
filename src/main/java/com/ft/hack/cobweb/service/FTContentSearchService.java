@@ -46,27 +46,29 @@ public class FTContentSearchService {
 				JSONObject jsonResultObject = (JSONObject)jsonResults.get(0);
 				JSONArray results = (JSONArray)jsonResultObject.get("results");
 				
-				for (Object object : results) {
-					SearchResult searchResult = new SearchResult();
-					
-					JSONObject result = (JSONObject)object;
-					JSONObject titleTemp = (JSONObject)result.get("title");
-					String title = (String)titleTemp.get("title");
-					JSONObject location = (JSONObject)result.get("location");
-					String url = (String)location.get("uri");
-					
-					searchResult.setTitle(title);
-					searchResult.setUrl(url);
-					searchResult.setBelongs(belongs);
-					
-					searchResults.add(searchResult);
+				if (null != results && results.size() > 0) {
+					for (Object object : results) {
+						SearchResult searchResult = new SearchResult();
+						
+						JSONObject result = (JSONObject)object;
+						JSONObject titleTemp = (JSONObject)result.get("title");
+						String title = (String)titleTemp.get("title");
+						JSONObject location = (JSONObject)result.get("location");
+						String url = (String)location.get("uri");
+						
+						searchResult.setTitle(title);
+						searchResult.setUrl(url);
+						searchResult.setBelongs(belongs);
+						
+						searchResults.add(searchResult);
+					}
 				}
-			}catch(Exception e) {
+
+			} catch(Exception e) {
 				e.printStackTrace();
 				LOGGER.error(e);
 			}
 		}
-		
 		return searchResults;
 	}
 	

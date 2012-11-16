@@ -95,6 +95,6 @@ public class RelationsQueryService {
 	
 	public static void main(String args[]) {
 		RelationsQueryService queryService = new RelationsQueryService();
-		queryService.getRelations("Google");
+		queryService.getRelations("Larry Page");
 	}
 }

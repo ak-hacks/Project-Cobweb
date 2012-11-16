@@ -8,7 +8,7 @@ import org.neo4j.graphdb.index.Index;
 public class DBConnectionManager {
 
 	//private static final String DB_PATH = "database/cobweb.db";
-	private static final String DB_PATH ="/Users/anurag.kapur/Tech_Stuff/workspace/personal/cobweb/database/cobweb.db";
+	private static final String DB_PATH ="database/cobweb.db";
 	private static GraphDatabaseService graphDb;
 	private static Index<Node> indexService;
 	
