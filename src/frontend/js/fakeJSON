@@ -1,0 +1,97 @@
+{
+   "results":[
+      [],
+      [
+         {
+            "type":"article",
+            "url":"http://blogs.ft.com/businessblog/2012/10/larry-page-has-been-good-for-googles-shareholders/",
+            "title":"Larry Page has been good for Google's shareholders",
+            "belongs":[
+               "Google",
+               "Larry Page"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://www.ft.com/cms/s/0/52803e8a-177d-11e2-8ebe-00144feabdc0.html",
+            "title":"EU warns Google risks fines over privacy",
+            "belongs":[
+               "Google",
+               "Larry Page"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://ftalphaville.ft.com/2012/10/18/1219071/larry-no-longer-pending/",
+            "title":"Larry, no longer pending",
+            "belongs":[
+               "Google",
+               "Larry Page"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://blogs.ft.com/tech-blog/2012/09/story-of-the-week-apples-patent-win/",
+            "title":"Story of the Week: Apple's patent win",
+            "belongs":[
+               "Google",
+               "Larry Page"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://www.ft.com/cms/s/2/bd0b9a86-df27-11e0-9af3-00144feabdc0.html",
+            "title":"Turn off your phones, techies. Welcome to Burning Man",
+            "belongs":[
+               "Google",
+               "Larry Page"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://blogs.ft.com/the-world/2012/11/2012-us-election-the-polls-open/",
+            "title":"US Election - The Polls Open",
+            "belongs":[
+               "Google",
+               "Sergey Brin"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://blogs.ft.com/tech-blog/2012/06/googles-smart-glasses-a-first-hands-on/",
+            "title":"Google's \"smart\" glasses: a first hands-on",
+            "belongs":[
+               "Google",
+               "Sergey Brin"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://www.ft.com/cms/s/2/fab58818-e63a-11e1-ac5f-00144feab49a.html",
+            "title":"The internet: Command and control",
+            "belongs":[
+               "Google",
+               "Sergey Brin"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://www.ft.com/cms/s/0/8bde680a-d0e2-11e1-8957-00144feabdc0.html",
+            "title":"Data diva who left Google to ‘go purple’",
+            "belongs":[
+               "Google",
+               "Sergey Brin"
+            ]
+         },
+         {
+            "type":"article",
+            "url":"http://www.ft.com/cms/s/0/690ea336-e32e-11e1-a78c-00144feab49a.html",
+            "title":"Google acts to reduce pirated content",
+            "belongs":[
+               "Google",
+               "Sergey Brin"
+            ]
+         }
+      ]
+   ]
+}
