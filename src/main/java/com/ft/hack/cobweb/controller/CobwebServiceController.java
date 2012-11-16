@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ft.hack.cobweb.domain.Datanode;
 import com.ft.hack.cobweb.service.RelationsQueryService;
 
 @Controller
@@ -18,7 +17,7 @@ public class CobwebServiceController {
 	@RequestMapping(method = RequestMethod.GET, value = "/relations/{name}")
 	public ModelAndView getRelations(@PathVariable String name) {
 		RelationsQueryService queryService = new RelationsQueryService();
-		List<Datanode> dataNodes = queryService.getRelations(name);
-		return new ModelAndView("relations", "nodes", dataNodes);
+		List<List> dataNodes = queryService.getRelations(name);
+		return new ModelAndView("relations", "results", dataNodes);
 	}
 }
