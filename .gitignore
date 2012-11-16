@@ -4,3 +4,8 @@
 *.jar
 *.war
 *.ear
+
+# Data/Output folders
+database/
+target/
+bin/
