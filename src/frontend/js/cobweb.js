@@ -145,8 +145,6 @@ function doSearch(query,callback){
 
   $('#canvas').append('<h1>Search for &quot;' + query + '&quot;.</h1>');
   
-  query = query.toLowerCase().replace(/^.|\s\S/g, function(a) { return a.toUpperCase(); });
-
   $.get('/cobweb/rest/relations/' + query + '.json', function(data){
     callback();
     
