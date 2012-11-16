@@ -143,7 +143,7 @@ function doSearch(query,callback){
 
   $('#canvas').html('');
 
-  $('#canvas').append('<h1>Search for &quot;' + query + '&quot;.</h1>');
+  $('#canvas').append('<h1>Search for &quot;' + query.replace(/%20/g, ' ') + '&quot;.</h1>');
   
   $.get('/cobweb/rest/relations/' + query + '.json', function(data){
     callback();
