@@ -9,6 +9,15 @@ body {
 	text-align: left;
 	width: 980px;
 }
+#loading {
+	display: none;
+	position: fixed;
+	top: 55%;
+	left: 50%;
+	margin-top: -10px;
+	margin-left: -110px;
+	z-index: 1000;
+}
 body #header, body #footer {
 	position: relative;
 	z-index: 3;

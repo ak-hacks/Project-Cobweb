@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+  $('#loading').ajaxStart(function(){
+      $(this).show();
+  });
+
+  $('#loading').ajaxStop(function(){
+    $(this).hide();
+  });
+
   $(window).hashchange(function() {
     var query = location.hash.replace(/^#/, '');
 
