@@ -76,7 +76,7 @@ public class DBPopulator {
 	public static void main(String[] args) {
 		DBPopulator dbPopulator = new DBPopulator();
 		
-		String[] people = {"Larry Page", "Sergey Brin"};
+		String[] people = {"Larry Page", "Sergey Brin","Marjorie Scardino"};
 		
 		for (String string : people) {
 			List<String[]> records = dbPopulator.searchCorporateAPI(string);

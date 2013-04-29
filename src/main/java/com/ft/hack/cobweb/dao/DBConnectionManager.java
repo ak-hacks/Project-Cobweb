@@ -1,5 +1,8 @@
 package com.ft.hack.cobweb.dao;
 
+import java.util.ResourceBundle;
+
+import org.apache.taglibs.standard.tag.common.fmt.BundleSupport;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
@@ -7,8 +10,8 @@ import org.neo4j.graphdb.index.Index;
 
 public class DBConnectionManager {
 
-	//private static final String DB_PATH = "database/cobweb.db";
-	private static final String DB_PATH ="database/cobweb.db";
+	private static final ResourceBundle bundle = ResourceBundle.getBundle("appconfig");
+	private static final String DB_PATH = bundle.getString("db.path");
 	private static GraphDatabaseService graphDb;
 	private static Index<Node> indexService;
 	
