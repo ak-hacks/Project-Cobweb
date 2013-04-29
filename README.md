@@ -27,5 +27,4 @@ Populating the DB
 Run the DBPopulator standalone service to populate the DB with some initial data into the prototype.
 <pre>
 mvn exec:java -Dexec.mainClass="com.ft.hack.cobweb.service.DBPopulator"
-</pre> 
-mvn exec:java -Dexec.mainClass="com.ft.hack.cobweb.service.DBPopulator"
+</pre>
