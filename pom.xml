@@ -9,7 +9,11 @@
 	<properties>
 		<spring.version>3.0.7.RELEASE</spring.version>
 		<neo4j.version>1.9.M01</neo4j.version>
-	</properties>  
+	</properties>
+	
+	<build>
+	    <finalName>cobweb</finalName>
+	</build>
   
 	<dependencies>
 		<dependency>
