@@ -3,6 +3,12 @@
  */
 package com.ft.hack.cobweb.service;
 
+import com.ft.hack.cobweb.dao.CobwebDAO;
+import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,13 +18,6 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.log4j.Logger;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-
-import com.ft.hack.cobweb.dao.CobwebDAO;
 
 /**
  * @author anurag.kapur
@@ -46,7 +45,9 @@ public class DBPopulator {
 			JSONObject results = (JSONObject)obj;
 			JSONObject officersObject = (JSONObject)results.get("results");
 			JSONArray officers = (JSONArray)officersObject.get("officers");
-			
+
+            int count = 0;
+
 			for (Object object : officers) {
 				JSONObject officerWrapper = (JSONObject)object;
 				JSONObject officer = (JSONObject)officerWrapper.get("officer");
@@ -57,6 +58,10 @@ public class DBPopulator {
 				
 				String[] record = {query, "person", companyName, "company"};
 				records.add(record);
+
+                if(count ++ > 10) {
+                    break;
+                }
 			}
 		}catch (MalformedURLException e) {
 			e.printStackTrace();

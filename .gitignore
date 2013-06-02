@@ -9,3 +9,5 @@
 database/
 target/
 bin/
+.idea/
+*.iml

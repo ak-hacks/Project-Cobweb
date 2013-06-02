@@ -1,17 +1,16 @@
 package com.ft.hack.cobweb.service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
+import com.ft.hack.cobweb.dao.CobwebDAO;
+import com.ft.hack.cobweb.domain.Datanode;
+import com.ft.hack.cobweb.domain.SearchResult;
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.traversal.Traverser;
 
-import com.ft.hack.cobweb.dao.CobwebDAO;
-import com.ft.hack.cobweb.domain.Datanode;
-import com.ft.hack.cobweb.domain.SearchResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author anurag.kapur
@@ -53,12 +52,20 @@ public class RelationsQueryService {
 				otherDataNode.setName(otherNodeName);
 				otherDataNode.setType((String)otherNode.getProperty(TYPE_KEY));
 				startingDataNode.addAssociation(otherDataNode);
-				
-				List<SearchResult> intermediateSearchResults = searchService.search(startingNodeName, otherNodeName);
+
+                List<SearchResult> intermediateSearchResults = new ArrayList<SearchResult>();
+
+                try {
+                    intermediateSearchResults = searchService.search(startingNodeName, otherNodeName);
+                }catch(Exception e) {
+                    LOGGER.error(e);
+                }
+
 				for (Iterator iterator = intermediateSearchResults.iterator(); iterator.hasNext();) {
 					SearchResult searchResult = (SearchResult) iterator.next();
 					searchResults.add(searchResult);
 				}
+                Thread.sleep(500);
 			}
 			
 			dataNodes.add(startingDataNode);

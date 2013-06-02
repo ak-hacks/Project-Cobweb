@@ -3,6 +3,12 @@
  */
 package com.ft.hack.cobweb.service;
 
+import com.ft.hack.cobweb.domain.SearchResult;
+import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -11,13 +17,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.log4j.Logger;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-
-import com.ft.hack.cobweb.domain.SearchResult;
 
 /**
  * @author anurag.kapur
@@ -28,10 +27,11 @@ public class FTContentSearchService {
 	private static final Logger LOGGER = Logger.getLogger(FTContentSearchService.class);
 	
 	public List<SearchResult> search(String query1, String query2) {
+        LOGGER.debug("FT search api will be invoked for " + query1 + " and " + query2);
 		FTContentSearchService searchService = new FTContentSearchService();
 		String queryString = "{\"queryString\": \""+ query1 + " " + query2 +"\",\"resultContext\" : {\"maxResults\" : \"5\",\"aspects\" : [\"title\",\"location\"]}}";
 		String response = searchService.excutePost(
-				"http://api.ft.com/content/search/v1?apiKey=718b18d599d32fdfaa7f6619747d403e", queryString);
+				"http://api.ft.com/content/search/v1?apiKey=ff7c49ce801f2c21bfa2de598a55f8c1", queryString);
 		Object obj = JSONValue.parse(response);
 		List<String> belongs = new ArrayList<String>();
 		belongs.add(query1);
