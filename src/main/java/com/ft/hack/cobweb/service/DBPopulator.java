@@ -77,6 +77,42 @@ public class DBPopulator {
 		
 		return records;
 	}
+
+    public List<String[]> constructMockData() {
+        List<String[]> records = new ArrayList<String[]>();
+
+        String[] record1 = {"Larry Page", "person", "Google", "company"};
+        String[] record2 = {"Sergey Brin", "person", "Google", "company"};
+        String[] record3 = {"John Ridding", "person", "Financial Times", "company"};
+        String[] record4 = {"Christina Scott", "person", "Financial Times", "company"};
+        String[] record5 = {"Lionel Barber", "person", "Financial Times", "company"};
+        String[] record6 = {"Larry Page", "person", "Youtube", "company"};
+        String[] record7 = {"Nikesh Arora", "person", "T-Mobile", "company"};
+        String[] record8 = {"John Legere", "person", "T-Mobile", "company"};
+        String[] record9 = {"Nikesh Arora", "person", "Bharti Airtel", "company"};
+        String[] record10 = {"Sunil Bharti Mittal", "person", "Bharti Airtel", "company"};
+        String[] record11 = {"Rajan Bharti Mittal", "person", "Bharti Airtel", "company"};
+        String[] record12 = {"Nikesh Arora", "person", "Google", "company"};
+        String[] record13 = {"John Ridding", "person", "Pearson", "company"};
+        String[] record14 = {"John Fallon", "person", "Pearson", "company"};
+
+        records.add(record1);
+        records.add(record2);
+        records.add(record3);
+        records.add(record4);
+        records.add(record5);
+        records.add(record6);
+        records.add(record7);
+        records.add(record8);
+        records.add(record9);
+        records.add(record10);
+        records.add(record11);
+        records.add(record12);
+        records.add(record13);
+        records.add(record14);
+
+        return records;
+    }
 	
 	public static void main(String[] args) {
 		DBPopulator dbPopulator = new DBPopulator();
