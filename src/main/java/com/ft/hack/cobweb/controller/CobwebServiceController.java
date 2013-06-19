@@ -26,7 +26,6 @@ public class CobwebServiceController {
 	public ModelAndView populatedb() {
 		DBPopulator dbPopulator = new DBPopulator();
 
-        /*
 		String[] people = { "Larry Page", "Sergey Brin", "Glen Moreno", "Marjorie Scardino", "Robin Freestone",
 				"William Ethridge", "Rona Fairhead", "Eric Schmidt", "Nikesh Arora", "Timothy Cook", "Philip Schiller",
 				"Arthur Levinson", "Peter Oppenheimer", "Andrea Jung"};
@@ -35,12 +34,13 @@ public class CobwebServiceController {
 			List<String[]> records = dbPopulator.searchCorporateAPI(string);
 			CobwebDAO dao = new CobwebDAO();
 			dao.insertRecords(records);
-		}*/
+		}
 
+        /*
         List<String[]> records = dbPopulator.constructMockData();
         CobwebDAO dao = new CobwebDAO();
         dao.insertRecords(records);
-
+        */
 		return new ModelAndView("populatedb", "populatedb", null);
 	}
 }

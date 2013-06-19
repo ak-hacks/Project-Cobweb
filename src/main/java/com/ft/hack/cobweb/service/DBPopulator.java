@@ -46,22 +46,16 @@ public class DBPopulator {
 			JSONObject officersObject = (JSONObject)results.get("results");
 			JSONArray officers = (JSONArray)officersObject.get("officers");
 
-            int count = 0;
-
 			for (Object object : officers) {
 				JSONObject officerWrapper = (JSONObject)object;
 				JSONObject officer = (JSONObject)officerWrapper.get("officer");
 				JSONObject company = (JSONObject)officer.get("company");
 				String companyName = (String)company.get("name");
+
 				LOGGER.debug(companyName);
-				
 				
 				String[] record = {query, "person", companyName, "company"};
 				records.add(record);
-
-                if(count ++ > 10) {
-                    break;
-                }
 			}
 		}catch (MalformedURLException e) {
 			e.printStackTrace();

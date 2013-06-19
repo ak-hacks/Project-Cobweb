@@ -29,7 +29,7 @@ public class FTContentSearchService {
 	public List<SearchResult> search(String query1, String query2) {
         LOGGER.debug("FT search api will be invoked for " + query1 + " and " + query2);
 		FTContentSearchService searchService = new FTContentSearchService();
-		String queryString = "{\"queryString\": \""+ query1 + " " + query2 +"\",\"resultContext\" : {\"maxResults\" : \"2\",\"aspects\" : [\"title\",\"location\"]}}";
+		String queryString = "{\"queryString\": \""+ query1 + " " + query2 +"\",\"resultContext\" : {\"maxResults\" : \"5\",\"aspects\" : [\"title\",\"location\"]}}";
 		String response = searchService.excutePost(
 				"http://api.ft.com/content/search/v1?apiKey=ff7c49ce801f2c21bfa2de598a55f8c1", queryString);
 		Object obj = JSONValue.parse(response);

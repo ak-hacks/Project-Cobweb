@@ -41,52 +41,49 @@ public class RelationsQueryService {
 			Datanode startingDataNode = new Datanode();
 			startingDataNode.setName((String)startingNode.getProperty(NAME_KEY));
 			startingDataNode.setType((String)startingNode.getProperty(TYPE_KEY));
-			
-			Iterator<Relationship> startingNodeRelationships = startingNode.getRelationships().iterator();
-			while (startingNodeRelationships.hasNext()) {
-				Datanode otherDataNode = new Datanode();
-				
-				Relationship relationship = (Relationship) startingNodeRelationships.next();
-				Node otherNode = relationship.getOtherNode(startingNode);
-				String otherNodeName = (String)otherNode.getProperty(NAME_KEY);
-				otherDataNode.setName(otherNodeName);
-				otherDataNode.setType((String)otherNode.getProperty(TYPE_KEY));
-				startingDataNode.addAssociation(otherDataNode);
+
+            for (Relationship relationship2 : startingNode.getRelationships()) {
+                Datanode otherDataNode = new Datanode();
+
+                Relationship relationship = relationship2;
+                Node otherNode = relationship.getOtherNode(startingNode);
+                String otherNodeName = (String) otherNode.getProperty(NAME_KEY);
+                otherDataNode.setName(otherNodeName);
+                otherDataNode.setType((String) otherNode.getProperty(TYPE_KEY));
+                startingDataNode.addAssociation(otherDataNode);
 
                 List<SearchResult> intermediateSearchResults = new ArrayList<SearchResult>();
 
                 try {
                     intermediateSearchResults = searchService.search(startingNodeName, otherNodeName);
-                }catch(Exception e) {
+                } catch (Exception e) {
                     LOGGER.error(e);
                 }
 
-				for (Iterator iterator = intermediateSearchResults.iterator(); iterator.hasNext();) {
-					SearchResult searchResult = (SearchResult) iterator.next();
-					searchResults.add(searchResult);
-				}
-                Thread.sleep(500);
-			}
+                for (SearchResult searchResult : intermediateSearchResults) {
+                    searchResults.add(searchResult);
+                }
+                Thread.sleep(100);
+            }
 			
 			dataNodes.add(startingDataNode);
 			
 			// Process remaining relationships graph
 			while (nodesIterator.hasNext()) {
 				Datanode dataNode = new Datanode();
-				Node node = (Node) nodesIterator.next();
+				Node node = nodesIterator.next();
 				dataNode.setName((String)node.getProperty(NAME_KEY));
 				dataNode.setType((String)node.getProperty(TYPE_KEY));
-				
-				Iterator<Relationship> nodeRelationships = node.getRelationships().iterator();
-				while (nodeRelationships.hasNext()) {
-					Datanode otherDataNode = new Datanode();
-					
-					Relationship relationship = (Relationship) nodeRelationships.next();
-					Node otherNode = relationship.getOtherNode(node);
-					otherDataNode.setName((String)otherNode.getProperty(NAME_KEY));
-					otherDataNode.setType((String)otherNode.getProperty(TYPE_KEY));
-					dataNode.addAssociation(otherDataNode);
-				}
+
+                for (Relationship relationship1 : node.getRelationships()) {
+                    Datanode otherDataNode = new Datanode();
+
+                    Relationship relationship = relationship1;
+                    Node otherNode = relationship.getOtherNode(node);
+                    otherDataNode.setName((String) otherNode.getProperty(NAME_KEY));
+                    otherDataNode.setType((String) otherNode.getProperty(TYPE_KEY));
+                    dataNode.addAssociation(otherDataNode);
+                }
 				dataNodes.add(dataNode);
 			}
 			
